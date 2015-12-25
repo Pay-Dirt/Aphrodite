@@ -11,7 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225125410) do
+ActiveRecord::Schema.define(version: 20151225145820) do
+
+  create_table "permission_groups", force: :cascade do |t|
+    t.integer  "role_id"
+    t.integer  "permission_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "permission_groups", ["permission_id"], name: "index_permission_groups_on_permission_id"
+  add_index "permission_groups", ["role_id"], name: "index_permission_groups_on_role_id"
+
+  create_table "permissions", force: :cascade do |t|
+    t.string   "resource_name"
+    t.string   "type_of_crud"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "role_assignments", force: :cascade do |t|
+    t.integer  "user_login_id"
+    t.integer  "role_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "role_assignments", ["role_id"], name: "index_role_assignments_on_role_id"
+  add_index "role_assignments", ["user_login_id"], name: "index_role_assignments_on_user_login_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "role_name"
+    t.string   "role_alias"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "schools", force: :cascade do |t|
     t.string   "name",                  null: false
