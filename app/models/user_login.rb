@@ -10,4 +10,6 @@ class UserLogin < ActiveRecord::Base
   
   #associations
   belongs_to :school
+  has_many :roles, through: :role_assignments
+  has_many :role_assignments
 end

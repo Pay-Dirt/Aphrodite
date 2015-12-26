@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225145820) do
+ActiveRecord::Schema.define(version: 20151226060104) do
 
   create_table "permission_groups", force: :cascade do |t|
     t.integer  "role_id"
@@ -60,16 +60,16 @@ ActiveRecord::Schema.define(version: 20151225145820) do
   end
 
   create_table "user_logins", force: :cascade do |t|
-    t.string   "username",                          null: false
+    t.string   "username",                                     null: false
     t.string   "email"
-    t.integer  "contact"
+    t.integer  "contact",           limit: 12
     t.string   "password_digest"
     t.string   "last_ip_address"
-    t.boolean  "activation_status", default: false
-    t.boolean  "locked_status",     default: false
+    t.boolean  "activation_status",            default: false
+    t.boolean  "locked_status",                default: false
     t.integer  "school_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   add_index "user_logins", ["email"], name: "index_user_logins_on_email"
