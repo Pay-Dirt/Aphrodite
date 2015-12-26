@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :batches
+  resources :subjects
+  resources :grades
   resources :teachers
   resources :roles
   resources :permissions
