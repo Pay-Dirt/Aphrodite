@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teachers
   resources :roles
   resources :permissions
   resources :user_logins

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226060104) do
+ActiveRecord::Schema.define(version: 20151226084831) do
 
   create_table "permission_groups", force: :cascade do |t|
     t.integer  "role_id"
@@ -59,17 +59,37 @@ ActiveRecord::Schema.define(version: 20151226060104) do
     t.string   "alias"
   end
 
+  create_table "teachers", force: :cascade do |t|
+    t.string   "teacher_name"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.date     "dob"
+    t.string   "qualification"
+    t.string   "designation"
+    t.integer  "experience",        limit: 1
+    t.string   "field_of_interest"
+    t.string   "gender",            limit: 1
+    t.integer  "user_login_id"
+    t.integer  "school_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "teachers", ["school_id"], name: "index_teachers_on_school_id"
+  add_index "teachers", ["teacher_name"], name: "index_teachers_on_teacher_name"
+  add_index "teachers", ["user_login_id"], name: "index_teachers_on_user_login_id"
+
   create_table "user_logins", force: :cascade do |t|
-    t.string   "username",                                     null: false
+    t.string   "username",                                    null: false
     t.string   "email"
-    t.integer  "contact",           limit: 12
+    t.integer  "contact",           limit: 5
     t.string   "password_digest"
     t.string   "last_ip_address"
-    t.boolean  "activation_status",            default: false
-    t.boolean  "locked_status",                default: false
+    t.boolean  "activation_status",           default: false
+    t.boolean  "locked_status",               default: false
     t.integer  "school_id"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "user_logins", ["email"], name: "index_user_logins_on_email"

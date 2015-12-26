@@ -7,4 +7,5 @@ class School < ActiveRecord::Base
   
   #associations
   has_many :user_logins
+  has_many :teachers
 end

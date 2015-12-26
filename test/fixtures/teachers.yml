@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teacher_name: MyString
+  father_name: MyString
+  mother_name: MyString
+  dob: 2015-12-26
+  qualification: MyString
+  designation: MyString
+  experience: 1
+  field_of_interest: MyString
+  gender: MyString
+  user_login_id: 
+  school_id: 
+
+two:
+  teacher_name: MyString
+  father_name: MyString
+  mother_name: MyString
+  dob: 2015-12-26
+  qualification: MyString
+  designation: MyString
+  experience: 1
+  field_of_interest: MyString
+  gender: MyString
+  user_login_id: 
+  school_id: 
