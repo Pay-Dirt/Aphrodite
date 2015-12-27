@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test_name: MyString
+  description: MyString
+  marks: 1
+  test_date: 2015-12-27 13:18:30
+  lecture_id: 
+
+two:
+  test_name: MyString
+  description: MyString
+  marks: 1
+  test_date: 2015-12-27 13:18:30
+  lecture_id: 

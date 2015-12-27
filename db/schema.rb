@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227074419) do
+ActiveRecord::Schema.define(version: 20151227075033) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "grade_id"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 20151227074419) do
 
   add_index "courses", ["grade_id"], name: "index_courses_on_grade_id"
   add_index "courses", ["school_id"], name: "index_courses_on_school_id"
+
+  create_table "exams", force: :cascade do |t|
+    t.string   "exam_name"
+    t.string   "description"
+    t.integer  "marks"
+    t.datetime "exam_date"
+    t.integer  "batch_id"
+    t.integer  "subject_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "exams", ["batch_id"], name: "index_exams_on_batch_id"
+  add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"
 
   create_table "grades", force: :cascade do |t|
     t.integer  "grade_level", limit: 1
@@ -147,6 +161,18 @@ ActiveRecord::Schema.define(version: 20151227074419) do
   add_index "teachers", ["school_id"], name: "index_teachers_on_school_id"
   add_index "teachers", ["teacher_name"], name: "index_teachers_on_teacher_name"
   add_index "teachers", ["user_login_id"], name: "index_teachers_on_user_login_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "test_name"
+    t.string   "description"
+    t.integer  "marks"
+    t.datetime "test_date"
+    t.integer  "lecture_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tests", ["lecture_id"], name: "index_tests_on_lecture_id"
 
   create_table "user_logins", force: :cascade do |t|
     t.string   "username",                                    null: false

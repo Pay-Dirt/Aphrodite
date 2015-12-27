@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :exams
+  resources :tests
   resources :lectures
   resources :courses
   resources :batches

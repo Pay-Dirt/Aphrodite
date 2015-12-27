@@ -4,4 +4,5 @@ class Subject < ActiveRecord::Base
   belongs_to :grade
   has_many :courses, through: :subject_course_map
   has_many :subject_course_map
+  has_many :exams
 end
