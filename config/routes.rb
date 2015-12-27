@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :teacher_attendances
+  resources :student_attendances
+  resources :students
   resources :exams
   resources :tests
   resources :lectures

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227075033) do
+ActiveRecord::Schema.define(version: 20151227081823) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "grade_id"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20151227075033) do
   add_index "batches", ["grade_id"], name: "index_batches_on_grade_id"
   add_index "batches", ["school_id"], name: "index_batches_on_school_id"
   add_index "batches", ["teacher_id"], name: "index_batches_on_teacher_id"
+
+  create_table "course_batch_maps", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "course_batch_maps", ["batch_id"], name: "index_course_batch_maps_on_batch_id"
+  add_index "course_batch_maps", ["course_id"], name: "index_course_batch_maps_on_course_id"
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
@@ -58,6 +68,16 @@ ActiveRecord::Schema.define(version: 20151227075033) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  create_table "lecture_batch_maps", force: :cascade do |t|
+    t.integer  "batch_id"
+    t.integer  "lecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lecture_batch_maps", ["batch_id"], name: "index_lecture_batch_maps_on_batch_id"
+  add_index "lecture_batch_maps", ["lecture_id"], name: "index_lecture_batch_maps_on_lecture_id"
 
   create_table "lectures", force: :cascade do |t|
     t.string   "lecture_name"
@@ -120,6 +140,35 @@ ActiveRecord::Schema.define(version: 20151227075033) do
     t.string   "alias"
   end
 
+  create_table "student_attendances", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "school_id"
+    t.string   "status"
+    t.date     "attendance_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "student_attendances", ["school_id"], name: "index_student_attendances_on_school_id"
+  add_index "student_attendances", ["student_id"], name: "index_student_attendances_on_student_id"
+
+  create_table "students", force: :cascade do |t|
+    t.string   "student_name"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.date     "dob"
+    t.string   "gender"
+    t.integer  "school_id"
+    t.integer  "batch_id"
+    t.integer  "course_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "students", ["batch_id"], name: "index_students_on_batch_id"
+  add_index "students", ["course_id"], name: "index_students_on_course_id"
+  add_index "students", ["school_id"], name: "index_students_on_school_id"
+
   create_table "subject_course_maps", force: :cascade do |t|
     t.integer  "subject_id"
     t.integer  "course_id"
@@ -141,6 +190,18 @@ ActiveRecord::Schema.define(version: 20151227075033) do
 
   add_index "subjects", ["grade_id"], name: "index_subjects_on_grade_id"
   add_index "subjects", ["school_id"], name: "index_subjects_on_school_id"
+
+  create_table "teacher_attendances", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.integer  "school_id"
+    t.string   "status"
+    t.date     "attendance_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "teacher_attendances", ["school_id"], name: "index_teacher_attendances_on_school_id"
+  add_index "teacher_attendances", ["teacher_id"], name: "index_teacher_attendances_on_teacher_id"
 
   create_table "teachers", force: :cascade do |t|
     t.string   "teacher_name"
