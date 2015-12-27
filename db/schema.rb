@@ -11,7 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226084831) do
+ActiveRecord::Schema.define(version: 20151227074419) do
+
+  create_table "batches", force: :cascade do |t|
+    t.integer  "grade_id"
+    t.integer  "school_id"
+    t.string   "section"
+    t.string   "class_alias"
+    t.integer  "teacher_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "batches", ["grade_id"], name: "index_batches_on_grade_id"
+  add_index "batches", ["school_id"], name: "index_batches_on_school_id"
+  add_index "batches", ["teacher_id"], name: "index_batches_on_teacher_id"
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "course_name"
+    t.integer  "school_id"
+    t.integer  "grade_id"
+    t.string   "comments"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "courses", ["grade_id"], name: "index_courses_on_grade_id"
+  add_index "courses", ["school_id"], name: "index_courses_on_school_id"
+
+  create_table "grades", force: :cascade do |t|
+    t.integer  "grade_level", limit: 1
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "lectures", force: :cascade do |t|
+    t.string   "lecture_name"
+    t.integer  "teacher_id"
+    t.integer  "subject_id"
+    t.integer  "batch_id"
+    t.integer  "school_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "lectures", ["batch_id"], name: "index_lectures_on_batch_id"
+  add_index "lectures", ["school_id"], name: "index_lectures_on_school_id"
+  add_index "lectures", ["subject_id"], name: "index_lectures_on_subject_id"
+  add_index "lectures", ["teacher_id"], name: "index_lectures_on_teacher_id"
 
   create_table "permission_groups", force: :cascade do |t|
     t.integer  "role_id"
@@ -58,6 +105,28 @@ ActiveRecord::Schema.define(version: 20151226084831) do
     t.datetime "updated_at",            null: false
     t.string   "alias"
   end
+
+  create_table "subject_course_maps", force: :cascade do |t|
+    t.integer  "subject_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subject_course_maps", ["course_id"], name: "index_subject_course_maps_on_course_id"
+  add_index "subject_course_maps", ["subject_id"], name: "index_subject_course_maps_on_subject_id"
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "subject_name"
+    t.string   "description"
+    t.integer  "school_id"
+    t.integer  "grade_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "subjects", ["grade_id"], name: "index_subjects_on_grade_id"
+  add_index "subjects", ["school_id"], name: "index_subjects_on_school_id"
 
   create_table "teachers", force: :cascade do |t|
     t.string   "teacher_name"

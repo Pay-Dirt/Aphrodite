@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lecture_name: MyString
+  teacher_id: 
+  subject_id: 
+  batch_id: 
+  school_id: 
+
+two:
+  lecture_name: MyString
+  teacher_id: 
+  subject_id: 
+  batch_id: 
+  school_id: 
