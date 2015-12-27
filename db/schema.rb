@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227081823) do
+ActiveRecord::Schema.define(version: 20151227082314) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "grade_id"
@@ -94,6 +94,18 @@ ActiveRecord::Schema.define(version: 20151227081823) do
   add_index "lectures", ["subject_id"], name: "index_lectures_on_subject_id"
   add_index "lectures", ["teacher_id"], name: "index_lectures_on_teacher_id"
 
+  create_table "parents", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "parent_name"
+    t.integer  "contact_phone"
+    t.string   "contact_email"
+    t.integer  "contact_alt_phone"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "parents", ["student_id"], name: "index_parents_on_student_id"
+
   create_table "permission_groups", force: :cascade do |t|
     t.integer  "role_id"
     t.integer  "permission_id"
@@ -138,6 +150,7 @@ ActiveRecord::Schema.define(version: 20151227081823) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "alias"
+    t.integer  "pin_code"
   end
 
   create_table "student_attendances", force: :cascade do |t|
@@ -163,6 +176,11 @@ ActiveRecord::Schema.define(version: 20151227081823) do
     t.integer  "course_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "pin_code"
+    t.string   "image_loc"
   end
 
   add_index "students", ["batch_id"], name: "index_students_on_batch_id"
