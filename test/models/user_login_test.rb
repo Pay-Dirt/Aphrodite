@@ -16,6 +16,14 @@ class UserLoginTest < ActiveSupport::TestCase
     @user.school_id=nil
     assert_not @user.valid?
   end
+  test "contact number valid" do
+    @user.contact=999999999999
+    assert @user.valid?
+  end
+  test "contact not valid" do
+    @user.contact=9999999999999
+    assert_not @user.valid?
+  end
   # test "the truth" do
   #   assert true
   # end

@@ -24,9 +24,9 @@ module Aphrodite
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    
+    config.autoload_paths+=%W["#{config.root}/app/validators/"]
     #to prevenet generation of stylesheets and javascripts
-  config.generators.stylesheets = false
-  config.generators.javascripts = false
+    config.generators.stylesheets = false
+    config.generators.javascripts = false
   end
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teacher_id: 
+  school_id: 
+  status: MyString
+  attendance_date: 2015-12-27
+
+two:
+  teacher_id: 
+  school_id: 
+  status: MyString
+  attendance_date: 2015-12-27
