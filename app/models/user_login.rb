@@ -1,4 +1,7 @@
 class UserLogin < ActiveRecord::Base
+  #extra attributes
+  attr_accessor :current_role,:current_permissions
+  
   #for password encryption
   has_secure_password
   
