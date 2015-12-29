@@ -1,4 +1,5 @@
 class Lecture < ActiveRecord::Base
+  validates :teacher_id,:subject_id,:school_id,:lecture_name,presence:true
   belongs_to :teacher
   belongs_to :subject
   belongs_to :school
