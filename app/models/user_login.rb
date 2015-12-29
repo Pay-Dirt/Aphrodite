@@ -13,4 +13,5 @@ class UserLogin < ActiveRecord::Base
   has_many :roles, through: :role_assignments
   has_many :role_assignments
   has_many :teachers
+  has_many :notifications
 end
