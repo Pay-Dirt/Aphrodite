@@ -30,6 +30,9 @@ gem 'pundit'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+#For rails api json formatiing
+gem 'active_model_serializers'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
