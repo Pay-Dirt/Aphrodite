@@ -37,7 +37,7 @@ gem 'active_model_serializers'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rails-erd'
+  #gem 'rails-erd'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
