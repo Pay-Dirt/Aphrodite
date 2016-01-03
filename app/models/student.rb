@@ -5,4 +5,5 @@ class Student < ActiveRecord::Base
   belongs_to :school
   belongs_to :batch
   belongs_to :course
+  has_many :student_attendances
 end

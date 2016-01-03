@@ -7,5 +7,7 @@ class Teacher < ActiveRecord::Base
   #associations
   belongs_to :user_login
   belongs_to :school
-  has_many :batches
+  has_one :batch
+  has_many :teacher_attendances
+  has_many :lectures
 end
