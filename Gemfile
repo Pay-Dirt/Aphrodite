@@ -31,8 +31,10 @@ gem 'pundit'
 # gem 'unicorn'
 
 #For rails api json formatiing
-gem 'active_model_serializers'
+gem 'active_model_serializers',:git=>'https://github.com/rails-api/active_model_serializers.git'
 
+#for performance tracking
+#gem 'rack-mini-profiler'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

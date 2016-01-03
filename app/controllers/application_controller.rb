@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, except: [:create]
   include Pundit
   include SessionHelper
+  include ActionController::Serializations
+  ActiveModelSerializers.config.adapter=:json
 end
