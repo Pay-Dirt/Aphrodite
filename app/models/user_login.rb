@@ -15,6 +15,6 @@ class UserLogin < ActiveRecord::Base
   belongs_to :school
   has_many :roles, through: :role_assignments
   has_many :role_assignments
-  has_many :teachers
+  belongs_to :user_type, polymorphic:true
   has_many :notifications
 end

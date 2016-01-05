@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105201734) do
+ActiveRecord::Schema.define(version: 20160105204021) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "grade_id"
@@ -288,10 +288,13 @@ ActiveRecord::Schema.define(version: 20160105201734) do
     t.integer  "school_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.integer  "user_type_id"
+    t.string   "user_type_type"
   end
 
   add_index "user_logins", ["email"], name: "index_user_logins_on_email"
   add_index "user_logins", ["school_id"], name: "index_user_logins_on_school_id"
+  add_index "user_logins", ["user_type_type", "user_type_id"], name: "index_user_logins_on_user_type_type_and_user_type_id"
   add_index "user_logins", ["username"], name: "index_user_logins_on_username"
 
 end
