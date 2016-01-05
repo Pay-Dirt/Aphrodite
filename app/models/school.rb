@@ -12,4 +12,5 @@ class School < ActiveRecord::Base
   has_many :lectures
   has_many :courses
   has_many :students
+  has_many :subjects
 end
