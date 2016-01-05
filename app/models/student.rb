@@ -6,4 +6,5 @@ class Student < ActiveRecord::Base
   belongs_to :batch
   belongs_to :course
   has_many :student_attendances
+  has_one :picture, as: :has_picture
 end
