@@ -1,0 +1,2 @@
+class StudentAttendanceTempsController < ApplicationController
+end

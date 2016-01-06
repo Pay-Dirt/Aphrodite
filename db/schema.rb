@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103033237) do
+ActiveRecord::Schema.define(version: 20160106063140) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "grade_id"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20160103033237) do
 
   add_index "courses", ["grade_id"], name: "index_courses_on_grade_id"
   add_index "courses", ["school_id"], name: "index_courses_on_school_id"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "event_name"
+    t.string   "event_desctiption"
+    t.string   "event_type",        null: false
+    t.integer  "event_type_id",     null: false
+    t.integer  "user_login_id",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "events", ["user_login_id"], name: "index_events_on_user_login_id"
 
   create_table "exams", force: :cascade do |t|
     t.string   "exam_name"
@@ -131,6 +143,16 @@ ActiveRecord::Schema.define(version: 20160103033237) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "has_picture_id"
+    t.string   "has_picture_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "pictures", ["has_picture_type", "has_picture_id"], name: "index_pictures_on_has_picture_type_and_has_picture_id"
+
   create_table "role_assignments", force: :cascade do |t|
     t.integer  "user_login_id"
     t.integer  "role_id"
@@ -161,6 +183,16 @@ ActiveRecord::Schema.define(version: 20160103033237) do
     t.integer  "pin_code"
   end
 
+  create_table "student_attendance_temps", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "status"
+    t.date     "attendance_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "student_attendance_temps", ["student_id"], name: "index_student_attendance_temps_on_student_id"
+
   create_table "student_attendances", force: :cascade do |t|
     t.integer  "student_id"
     t.string   "status"
@@ -186,7 +218,6 @@ ActiveRecord::Schema.define(version: 20160103033237) do
     t.string   "city"
     t.string   "state"
     t.integer  "pin_code"
-    t.string   "image_loc"
     t.string   "rollno"
   end
 
@@ -269,10 +300,13 @@ ActiveRecord::Schema.define(version: 20160103033237) do
     t.integer  "school_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.integer  "user_type_id"
+    t.string   "user_type_type"
   end
 
   add_index "user_logins", ["email"], name: "index_user_logins_on_email"
   add_index "user_logins", ["school_id"], name: "index_user_logins_on_school_id"
+  add_index "user_logins", ["user_type_type", "user_type_id"], name: "index_user_logins_on_user_type_type_and_user_type_id"
   add_index "user_logins", ["username"], name: "index_user_logins_on_username"
 
 end

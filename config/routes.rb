@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :events
+  resources :pictures
+  resources :student_attendance_temps
   resources :notifications
   resources :parents
   resources :teacher_attendances
