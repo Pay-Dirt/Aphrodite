@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105204021) do
+ActiveRecord::Schema.define(version: 20160106063140) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "grade_id"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20160105204021) do
 
   add_index "courses", ["grade_id"], name: "index_courses_on_grade_id"
   add_index "courses", ["school_id"], name: "index_courses_on_school_id"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "event_name"
+    t.string   "event_desctiption"
+    t.string   "event_type",        null: false
+    t.integer  "event_type_id",     null: false
+    t.integer  "user_login_id",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "events", ["user_login_id"], name: "index_events_on_user_login_id"
 
   create_table "exams", force: :cascade do |t|
     t.string   "exam_name"

@@ -17,4 +17,5 @@ class UserLogin < ActiveRecord::Base
   has_many :role_assignments
   belongs_to :user_type, polymorphic:true
   has_many :notifications
+  has_many :events
 end
