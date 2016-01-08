@@ -5,7 +5,4 @@ class BatchSerializer < ActiveModel::Serializer
   class TeacherSerializer < ActiveModel::Serializer
     attribute :teacher_name
   end
-  class GradeSerialzer < ActiveModel::Serializer
-    attribute :grade_level
-  end
 end

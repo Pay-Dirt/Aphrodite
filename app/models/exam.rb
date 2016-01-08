@@ -5,4 +5,5 @@ class Exam < ActiveRecord::Base
   validates :exam_date, date_today_or_future:true
   belongs_to :batch
   belongs_to :subject
+  has_many :exam_marks
 end

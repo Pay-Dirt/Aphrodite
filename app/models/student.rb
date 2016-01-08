@@ -8,4 +8,6 @@ class Student < ActiveRecord::Base
   has_many :student_attendances
   has_one :picture, as: :has_picture
   has_one :user_login, as: :user_type
+  has_many :test_marks
+  has_many :exam_marks
 end
