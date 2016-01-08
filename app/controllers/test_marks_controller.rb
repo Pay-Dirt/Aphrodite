@@ -1,0 +1,2 @@
+class TestMarksController < ApplicationController
+end
