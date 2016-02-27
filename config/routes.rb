@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :exam_marks
+  resources :test_marks
   resources :events
   resources :pictures
   resources :student_attendance_temps

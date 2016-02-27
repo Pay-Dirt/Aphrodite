@@ -5,5 +5,5 @@ class ApplicationController < ActionController::Base
   include Pundit
   include SessionHelper
   include ActionController::Serializations
-  ActiveModelSerializers.config.adapter=:json
+  ActiveModelSerializers.config.adapter=:json_api
 end
